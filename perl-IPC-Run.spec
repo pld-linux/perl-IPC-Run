@@ -4,7 +4,7 @@
 Summary:	IPC-Run perl module
 Summary(pl):	Modu³ perla IPC-Run
 Name:		perl-IPC-Run
-Version:	0.74
+Version:	0.75
 Release:	1
 License:	Artistic
 Group:		Development/Languages/Perl
