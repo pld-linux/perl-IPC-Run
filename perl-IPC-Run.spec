@@ -3,8 +3,8 @@
 %bcond_with	tests	# perform "make test" (one test fails)
 #
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	IPC
-%define	pnam	Run
+%define		pdir	IPC
+%define		pnam	Run
 Summary:	IPC::Run - system() and background procs w/ piping, redirs, ptys
 Summary(pl):	IPC::Run - uruchamianie procesów z potokami, przekierowaniami i pseudoterminalami
 Name:		perl-IPC-Run
