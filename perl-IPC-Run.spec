@@ -9,9 +9,9 @@ Release:	1
 License:	Artistic
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-BuildRequires:	rpm-perlprov >= 3.0.3-16
 BuildRequires:	perl >= 5
 BuildRequires:	perl-IO-Tty
+BuildRequires:	rpm-perlprov >= 3.0.3-16
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,12 +28,12 @@ command lines are provided.
 
 %description -l pl
 IPC::Run pozwala na uruchamianie i interakcjê z procesami potomnymi przy
-u¿yciu plików, potoków, i pseudo-tty.  Obs³uguje zarówno interfejs w stylu
-system(), jak i skryptowy; mo¿na tak¿e je mieszaæ.  Mo¿na stosowaæ API
+u¿yciu plików, potoków, i pseudo-tty. Obs³uguje zarówno interfejs w stylu
+system(), jak i skryptowy; mo¿na tak¿e je mieszaæ. Mo¿na stosowaæ API
 obiektowy i/lub proceduralny.
 
 Udostêpniane s± ró¿ne operatory przekierowania, podobne do spotykanych
-w linii poleceñ popularnych Uniksów i DOSa.
+w linii poleceñ popularnych Uniksów i DOS-a.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -47,14 +47,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf Changes
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc Changes
 %{perl_sitelib}/IPC/Run.pm
 %dir %{perl_sitelib}/IPC/Run
 %{perl_sitelib}/IPC/Run/*
