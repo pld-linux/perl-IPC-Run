@@ -5,13 +5,13 @@ Summary:	IPC-Run perl module
 Summary(pl):	Modu³ perla IPC-Run
 Name:		perl-IPC-Run
 Version:	0.75
-Release:	1
+Release:	2
 License:	Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 BuildRequires:	perl >= 5
 BuildRequires:	perl-IO-Tty
-BuildRequires:	rpm-perlprov >= 3.0.3-16
+BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,7 +39,8 @@ w linii poleceñ popularnych Uniksów i DOS-a.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Makefile.PL
+%{__perl} Makefile.PL \
+	INSTALLDIRS=vendor 
 %{__make}
 
 %install
@@ -53,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes
-%{perl_sitelib}/IPC/Run.pm
-%dir %{perl_sitelib}/IPC/Run
-%{perl_sitelib}/IPC/Run/*
+%{perl_vendorlib}/IPC/Run.pm
+%dir %{perl_vendorlib}/IPC/Run
+%{perl_vendorlib}/IPC/Run/*
 %{_mandir}/man3/*
