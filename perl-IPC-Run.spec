@@ -1,17 +1,21 @@
+#
+# Conditional build:
+%bcond_with	tests	# perform "make test" (one test fails)
+#
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	IPC
 %define	pnam	Run
-Summary:	IPC-Run perl module
-Summary(pl):	Modu³ perla IPC-Run
+Summary:	IPC::Run - system() and background procs w/ piping, redirs, ptys
+Summary(pl):	IPC::Run - uruchamianie procesów z potokami, przekierowaniami i pseudoterminalami
 Name:		perl-IPC-Run
-Version:	0.75
-Release:	2
-License:	Artistic
+Version:	0.77
+Release:	1
+License:	GPL or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	847a978dd319736f7966658cc7500ea8
-BuildRequires:	perl-devel >= 5
-BuildRequires:	perl-IO-Tty
+# Source0-md5:	a773bd22631cb8e736bbb2efa1e178c7
+BuildRequires:	perl-IO-Tty >= 1.00
+BuildRequires:	perl-devel >= 5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -19,19 +23,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq	'perl(IO::Pty)'
 
 %description
-IPC::Run allows you run and interact with child processes using files, pipes,
-and pseudo-ttys.  Both system()-style and scripted usages are supported and
-may be mixed.  Likewise, functional and OO API styles are both supported and
-may be mixed.
+IPC::Run allows you run and interact with child processes using files,
+pipes, and pseudo-ttys. Both system()-style and scripted usages are
+supported and may be mixed. Likewise, functional and OO API styles are
+both supported and may be mixed.
 
-Various redirection operators reminiscent of those seen on common Unix and DOS
-command lines are provided.
+Various redirection operators reminiscent of those seen on common Unix
+and DOS command lines are provided.
 
 %description -l pl
-IPC::Run pozwala na uruchamianie i interakcjê z procesami potomnymi przy
-u¿yciu plików, potoków, i pseudo-tty. Obs³uguje zarówno interfejs w stylu
-system(), jak i skryptowy; mo¿na tak¿e je mieszaæ. Mo¿na stosowaæ API
-obiektowy i/lub proceduralny.
+IPC::Run pozwala na uruchamianie i interakcjê z procesami potomnymi
+przy u¿yciu plików, potoków, i pseudoterminali. Obs³uguje zarówno
+interfejs w stylu system(), jak i skryptowy; mo¿na tak¿e je mieszaæ.
+Mo¿na stosowaæ API obiektowe i/lub proceduralne.
 
 Udostêpniane s± ró¿ne operatory przekierowania, podobne do spotykanych
 w linii poleceñ popularnych Uniksów i DOS-a.
@@ -44,10 +48,13 @@ w linii poleceñ popularnych Uniksów i DOS-a.
 	INSTALLDIRS=vendor
 %{__make}
 
+%{?with_tests:%{__make} test}
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
