@@ -39,7 +39,7 @@ w linii poleceñ popularnych Uniksów i DOS-a.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-perl Makefile.PL
+%{__perl} Makefile.PL
 %{__make}
 
 %install
