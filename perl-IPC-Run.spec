@@ -1,0 +1,61 @@
+%include	/usr/lib/rpm/macros.perl
+%define	pdir	IPC
+%define	pnam	Run
+Summary:	IPC-Run perl module
+Summary(pl):	Modu³ perla IPC-Run
+Name:		perl-IPC-Run
+Version:	0.74
+Release:	1
+License:	Artistic
+Group:		Development/Languages/Perl
+Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+BuildRequires:	rpm-perlprov >= 3.0.3-16
+BuildRequires:	perl >= 5
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_noautoreq	'perl(IO::Pty)'
+
+%description
+IPC::Run allows you run and interact with child processes using files, pipes,
+and pseudo-ttys.  Both system()-style and scripted usages are supported and
+may be mixed.  Likewise, functional and OO API styles are both supported and
+may be mixed.
+
+Various redirection operators reminiscent of those seen on common Unix and DOS
+command lines are provided.
+
+%description -l pl
+IPC::Run pozwala na uruchamianie i interakcjê z procesami potomnymi przy
+u¿yciu plików, potoków, i pseudo-tty.  Obs³uguje zarówno interfejs w stylu
+system(), jak i skryptowy; mo¿na tak¿e je mieszaæ.  Mo¿na stosowaæ API
+obiektowy i/lub proceduralny.
+
+Udostêpniane s± ró¿ne operatory przekierowania, podobne do spotykanych
+w linii poleceñ popularnych Uniksów i DOSa.
+
+%prep
+%setup -q -n %{pdir}-%{pnam}-%{version}
+
+%build
+perl Makefile.PL
+%{__make}
+%{__make} test
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf Changes
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc *.gz
+%{perl_sitelib}/IPC/Run.pm
+%dir %{perl_sitelib}/IPC/Run
+%{perl_sitelib}/IPC/Run/*
+%{_mandir}/man3/*
