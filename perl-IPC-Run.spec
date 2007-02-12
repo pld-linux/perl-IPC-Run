@@ -6,7 +6,7 @@
 %define		pdir	IPC
 %define		pnam	Run
 Summary:	IPC::Run - system() and background procs w/ piping, redirs, ptys
-Summary(pl):	IPC::Run - uruchamianie procesów z potokami, przekierowaniami i pseudoterminalami
+Summary(pl.UTF-8):   IPC::Run - uruchamianie procesÃ³w z potokami, przekierowaniami i pseudoterminalami
 Name:		perl-IPC-Run
 Version:	0.80
 Release:	1
@@ -31,14 +31,14 @@ both supported and may be mixed.
 Various redirection operators reminiscent of those seen on common Unix
 and DOS command lines are provided.
 
-%description -l pl
-IPC::Run pozwala na uruchamianie i interakcjê z procesami potomnymi
-przy u¿yciu plików, potoków, i pseudoterminali. Obs³uguje zarówno
-interfejs w stylu system(), jak i skryptowy; mo¿na tak¿e je mieszaæ.
-Mo¿na stosowaæ API obiektowe i/lub proceduralne.
+%description -l pl.UTF-8
+IPC::Run pozwala na uruchamianie i interakcjÄ™ z procesami potomnymi
+przy uÅ¼yciu plikÃ³w, potokÃ³w, i pseudoterminali. ObsÅ‚uguje zarÃ³wno
+interfejs w stylu system(), jak i skryptowy; moÅ¼na takÅ¼e je mieszaÄ‡.
+MoÅ¼na stosowaÄ‡ API obiektowe i/lub proceduralne.
 
-Udostêpniane s± ró¿ne operatory przekierowania, podobne do spotykanych
-w linii poleceñ popularnych Uniksów i DOS-a.
+UdostÄ™pniane sÄ… rÃ³Å¼ne operatory przekierowania, podobne do spotykanych
+w linii poleceÅ„ popularnych UniksÃ³w i DOS-a.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
