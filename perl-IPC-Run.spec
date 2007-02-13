@@ -6,7 +6,7 @@
 %define		pdir	IPC
 %define		pnam	Run
 Summary:	IPC::Run - system() and background procs w/ piping, redirs, ptys
-Summary(pl.UTF-8):   IPC::Run - uruchamianie procesów z potokami, przekierowaniami i pseudoterminalami
+Summary(pl.UTF-8):	IPC::Run - uruchamianie procesów z potokami, przekierowaniami i pseudoterminalami
 Name:		perl-IPC-Run
 Version:	0.80
 Release:	1
