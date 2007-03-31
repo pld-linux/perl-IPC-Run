@@ -12,8 +12,9 @@ Version:	0.80
 Release:	2
 License:	GPL or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/IPC/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	a867e694862afd4a3c429124618fc15e
+URL:		http://search.cpan.org/dist/IPC-Run/
 BuildRequires:	perl-IO-Tty >= 1.00
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
