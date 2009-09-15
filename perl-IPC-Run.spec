@@ -8,14 +8,14 @@
 Summary:	IPC::Run - system() and background procs w/ piping, redirs, ptys
 Summary(pl.UTF-8):	IPC::Run - uruchamianie procesów z potokami, przekierowaniami i pseudoterminalami
 Name:		perl-IPC-Run
-Version:	0.80
-Release:	2
+Version:	0.84
+Release:	1
 License:	GPL or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/IPC/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	a867e694862afd4a3c429124618fc15e
+# Source0-md5:	f7c1b7584ebcde637479bf5aa321491f
 URL:		http://search.cpan.org/dist/IPC-Run/
-BuildRequires:	perl-IO-Tty >= 1.00
+BuildRequires:	perl-IO-Tty >= 1.08
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
