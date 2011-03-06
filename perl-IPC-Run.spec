@@ -10,9 +10,10 @@ Summary(pl.UTF-8):	IPC::Run - uruchamianie procesów z potokami, przekierowaniam
 Name:		perl-IPC-Run
 Version:	0.89
 Release:	1
-License:	GPL or Artistic
+# same as perl
+License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-authors/id/T/TO/TODDR/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	9dc3b8cca378b871fafab7c6e5a61cdd
 URL:		http://search.cpan.org/dist/IPC-Run/
 BuildRequires:	perl-IO-Tty >= 1.08
@@ -20,8 +21,6 @@ BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_noautoreq	'perl(IO::Pty)'
 
 %description
 IPC::Run allows you run and interact with child processes using files,
@@ -65,5 +64,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes
 %{perl_vendorlib}/IPC/Run.pm
 %dir %{perl_vendorlib}/IPC/Run
-%{perl_vendorlib}/IPC/Run/*
-%{_mandir}/man3/*
+%{perl_vendorlib}/IPC/Run/*.pm
+%{_mandir}/man3/IPC::Run*.3pm*
