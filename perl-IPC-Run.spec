@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_with	tests	# perform "make test" (one test fails)
 #
-%include	/usr/lib/rpm/macros.perl
 %define		pdir	IPC
 %define		pnam	Run
 Summary:	IPC::Run - system() and background procs w/ piping, redirs, ptys
