@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests	# perform "make test" (one test fails)
+%bcond_without	tests	# unit tests
 #
 %define		pdir	IPC
 %define		pnam	Run
@@ -12,13 +12,17 @@ Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	https://www.cpan.org/modules/by-module/IPC/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	https://www.cpan.org/modules/by-module/IPC/TODDR/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	456c16b50adc600507c14b3326b2fbec
-URL:		https://search.cpan.org/dist/IPC-Run/
-BuildRequires:	perl-IO-Tty >= 1.08
-%{?with_tests:BuildRequires:	perl-Test-Simple >= 0.47}
-BuildRequires:	perl-devel >= 1:5.8.0
+URL:		https://metacpan.org/dist/IPC-Run
+BuildRequires:	perl-ExtUtils-MakeMaker
+BuildRequires:	perl-IO-Tty >= 1.25
+%if %{with tests}
+BuildRequires:	perl-Test-Simple >= 0.47
+%endif
+BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,9 +50,12 @@ w linii poleceń popularnych Uniksów i DOS-a.
 %build
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
+
 %{__make}
 
-%{?with_tests:%{__make} test}
+%if %{with tests}
+%{__make} test
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -61,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changelog
+%doc Changelog LICENSE
 %{perl_vendorlib}/IPC/Run.pm
 %dir %{perl_vendorlib}/IPC/Run
 %{perl_vendorlib}/IPC/Run/*.pm
